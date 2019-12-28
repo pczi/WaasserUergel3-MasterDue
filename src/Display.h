@@ -5,7 +5,7 @@
 #ifndef Display_h
 #define Display_h
 
-#include "../../../src/def.h"
+#include "def.h"
 #include "Arduino.h"
 #include <Adafruit_NeoMatrix.h>
 #include <Adafruit_NeoPixel.h>

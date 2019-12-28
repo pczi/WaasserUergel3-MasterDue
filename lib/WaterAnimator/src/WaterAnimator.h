@@ -5,7 +5,7 @@
 #ifndef WaterAnimator_h
 #define WaterAnimator_h
 
-#include "../../../src/def.h"
+#include "../../../include/def.h"
 #include "Arduino.h"
 #include "Analyser.h"
 #include "Awa.h"

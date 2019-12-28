@@ -3,7 +3,6 @@
   Created by Peter Czibula, February 18, 2019.
 */
 
-#include "../../../src/def.h"
 #include "Analyser.h"
 
 /************* constructor / Setup ****************/

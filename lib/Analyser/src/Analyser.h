@@ -14,6 +14,7 @@
 
 #define Bpm_buffer_size 64
 
+#include "../../../include/def.h"
 #include "Arduino.h"
 #include <CircularBuffer.h>
 
