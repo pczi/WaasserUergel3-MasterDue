@@ -8,7 +8,7 @@
 #include "Analyser.h"
 #include "LightAnimator.h"
 #include "WaterAnimator.h"
-#include "Display.h"
+#include "DisplayNeoMatrix.h"
 
 // interesting related documentation and projects:
 // rlogiacco/CircularBuffer
@@ -17,7 +17,7 @@
 // http://mziccard.me/2015/05/28/beats-detection-algorithms-1/
 
 Analyser analyser;
-Display displayMatrix;
+DisplayNeoMatrix neoMatrix;
 LightAnimator lights;
 WaterAnimator waters;
 
@@ -51,17 +51,20 @@ void setup()
   analyser.MaxBassThreshold = 0.75;
   analyser.MinBass = 30;
 
-  // light animation setup
+  // light animation setup with 13 led rings
   lights.begin(13, &analyser);
 
-  // waterjet animation setup
+  // waterjet animation setup with 13 waterjets
   waters.begin(13, &analyser);
+  // attack, how fast will the waterjet go up
   waters.WaterjetAttack = 40;
+  // decay, how fast will the waterjet go down
   waters.WaterjetDecay = 20;
+  // 
   waters.WaterjetcycleMillis = 50;
 
   // neopixel matrix setup
-  displayMatrix.begin(&matrix, &analyser, &lights, &waters);
+  neoMatrix.begin(&matrix, &analyser, &lights, &waters);
 }
 
 void loop()
@@ -79,17 +82,17 @@ void loop()
 
     waters.computeWaterAnimation();
 
-    displayMatrix.clearScreen();
+    neoMatrix.clearScreen();
 #if display_mode == 0
-    displayMatrix.drawVUmeter();
+    neoMatrix.drawVUmeter();
 #else
-    displayMatrix.drawWaterjets();
+    neoMatrix.drawWaterjets();
 #endif
-    displayMatrix.drawVolume();
-    displayMatrix.drawEnergyVar();
-    displayMatrix.drawVolumeBeatDetected();
-    displayMatrix.drawEnergyBeatDetected();
-    displayMatrix.showScreen();
+    neoMatrix.drawVolume();
+    neoMatrix.drawEnergyVar();
+    neoMatrix.drawVolumeBeatDetected();
+    neoMatrix.drawEnergyBeatDetected();
+    neoMatrix.showScreen();
     HZcount++;
   }
 
@@ -110,7 +113,7 @@ void loop()
   Serial.print(analyser.NoiseLevel);
   Serial.print(" noise, ");
 
-  Serial.print(displayMatrix.Brightness);
+  Serial.print(neoMatrix.Brightness);
   Serial.print(" bright ");
 
   Serial.println();

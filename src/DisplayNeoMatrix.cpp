@@ -1,17 +1,17 @@
 /*
-  Display.h - Library for animating sounds/lights on a NeoMatrix
+  DisplayNeoMatrix.h - Library for animating sounds/lights on a NeoMatrix
   Created by Peter Czibula, February 18, 2019.
 */
 
-#include "Display.h"
+#include "DisplayNeoMatrix.h"
 
-Display::Display()
+DisplayNeoMatrix::DisplayNeoMatrix()
 {
 }
 
 /************* Initialize the Spectrum Shield ****************/
 
-void Display::begin(Adafruit_NeoMatrix *pmatrix, Analyser *panalyser, LightAnimator *plight, WaterAnimator *pwater)
+void DisplayNeoMatrix::begin(Adafruit_NeoMatrix *pmatrix, Analyser *panalyser, LightAnimator *plight, WaterAnimator *pwater)
 {
   _matrix = pmatrix;
   _analyser = panalyser;
@@ -32,14 +32,14 @@ void Display::begin(Adafruit_NeoMatrix *pmatrix, Analyser *panalyser, LightAnima
 
 /*********** clear the matrix ***********************/
 
-void Display::clearScreen()
+void DisplayNeoMatrix::clearScreen()
 {
   _matrix->fillScreen(BLACK);
 }
 
 /*********** draw the VU meter on the matrix ***********************/
 
-void Display::drawVUmeter()
+void DisplayNeoMatrix::drawVUmeter()
 {
   // draw lights as ledpixels
   // this is not really so smart...
@@ -62,7 +62,7 @@ void Display::drawVUmeter()
   }
 }
 
-void Display::drawVUmeterBar(byte Band, byte BandLevel)
+void DisplayNeoMatrix::drawVUmeterBar(byte Band, byte BandLevel)
 {
   uint32_t LevelColor;
   // draw the bar
@@ -93,7 +93,7 @@ void Display::drawVUmeterBar(byte Band, byte BandLevel)
 
 /*********** draw the Waterjets on the matrix ***********************/
 
-void Display::drawWaterjets()
+void DisplayNeoMatrix::drawWaterjets()
 {
   // draw lights as ledpixels
   // this is not really so smart...
@@ -115,7 +115,7 @@ void Display::drawWaterjets()
   }
 }
 
-void Display::drawWaterjetBar(byte Band, byte BandLevel)
+void DisplayNeoMatrix::drawWaterjetBar(byte Band, byte BandLevel)
 {
   // draw the bar
   if (BandLevel > 6)
@@ -129,18 +129,18 @@ void Display::drawWaterjetBar(byte Band, byte BandLevel)
   _matrix->drawPixel(min(BandLevel + 1, 7), Band, WHITE);
 }
 
-void Display::drawVolume()
+void DisplayNeoMatrix::drawVolume()
 {
   this->drawBar(15, _analyser->Volume >> 4);
   _matrix->drawPixel(_analyser->MaxVolume >> 4, 15, WHITE);
 }
 
-void Display::drawEnergyVar()
+void DisplayNeoMatrix::drawEnergyVar()
 {
   this->drawBar(14, _analyser->EnergyVar >> 5);
 }
 
-void Display::drawBar(byte Band, byte BandLevel)
+void DisplayNeoMatrix::drawBar(byte Band, byte BandLevel)
 {
   if (BandLevel > 5)
   {
@@ -152,7 +152,7 @@ void Display::drawBar(byte Band, byte BandLevel)
   }
 }
 
-void Display::drawVolumeBeatDetected()
+void DisplayNeoMatrix::drawVolumeBeatDetected()
 {
   const int period = 10;
   static unsigned long time_start = 0;
@@ -177,7 +177,7 @@ void Display::drawVolumeBeatDetected()
   }
 }
 
-void Display::drawEnergyBeatDetected()
+void DisplayNeoMatrix::drawEnergyBeatDetected()
 {
   const int period = 10;
   static unsigned long time_start = 0;
@@ -202,12 +202,12 @@ void Display::drawEnergyBeatDetected()
   }
 }
 
-void Display::showScreen()
+void DisplayNeoMatrix::showScreen()
 {
   _matrix->show();
 }
 
-uint8_t Display::GammaColor(uint8_t color, bool dimmed)
+uint8_t DisplayNeoMatrix::GammaColor(uint8_t color, bool dimmed)
 {
   if (dimmed)
   {

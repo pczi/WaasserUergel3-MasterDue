@@ -1,9 +1,9 @@
 /*
-  Display.h - Library for animating sounds on a NeoMatrix
+  DisplayNeoMatrix.h - Library for animating sounds on a NeoMatrix
   Created by Peter Czibula, February 18, 2019.
 */
-#ifndef Display_h
-#define Display_h
+#ifndef DisplayNeoMatrix_h
+#define DisplayNeoMatrix_h
 
 #include "def.h"
 #include "Arduino.h"
@@ -14,12 +14,12 @@
 #include "LightAnimator.h"
 #include "WaterAnimator.h"
 
-class Display
+class DisplayNeoMatrix
 {
 
 public:
   // constructor / Setup
-  Display();
+  DisplayNeoMatrix();
   void begin(Adafruit_NeoMatrix *pmatrix, Analyser *panalyser, LightAnimator *plight, WaterAnimator *pwater);
   void clearScreen();
   void drawVUmeter();
