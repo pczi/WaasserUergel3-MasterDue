@@ -30,7 +30,6 @@ WaterAnimator::WaterAnimator()
   // set default values
   WaterjetAttack = 40;
   WaterjetDecay = 20;
-  WaterjetcycleMillis = 50;
   return;
 }
 
@@ -118,7 +117,6 @@ void WaterAnimator::computeWaterAnimation()
   avaValves.volumeBeat = _analyser->VolumeBeatDetected;
   avaValves.attack = WaterjetAttack;
   avaValves.decay = WaterjetDecay;
-  avaValves.cycleMillis = WaterjetcycleMillis;
 
   avaValves.runAnimation();
 }

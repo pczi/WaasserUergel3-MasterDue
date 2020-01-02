@@ -26,8 +26,6 @@ public:
   byte WaterjetAttack;
   // Waterjet decay every 20 millis
   byte WaterjetDecay;
-  // Waterjet cycle every 50 millis
-  byte WaterjetcycleMillis;
 
 private:
   Awa avaValves;

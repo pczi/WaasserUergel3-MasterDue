@@ -60,8 +60,6 @@ void setup()
   waters.WaterjetAttack = 40;
   // decay, how fast will the waterjet go down
   waters.WaterjetDecay = 20;
-  // 
-  waters.WaterjetcycleMillis = 50;
 
   // neopixel matrix setup
   neoMatrix.begin(&matrix, &analyser, &lights, &waters);
