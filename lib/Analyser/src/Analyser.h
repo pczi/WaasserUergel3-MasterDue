@@ -80,11 +80,13 @@ class Analyser
     CircularBuffer <unsigned long, Bpm_buffer_size> BpmBuffer;
     int bpmBufferBpmCount(unsigned long lastmillis);
 
+    // spectrum shield: strobe pin
     byte _strobe;
+    // spectrum shield: reset pin
     byte _reset;
-    // analog port to read left spectrum level
+    // spectrum shield: analog port to read left spectrum level
     byte _dcl;
-    // analog port to read right spectrum level
+    // spectrum shield: analog port to read right spectrum level
     byte _dcr;
     // analog potentiometer to adjust amplification factor
     byte _dcampfac;

@@ -147,7 +147,7 @@ void Analyser::read()
   static byte TempBlockEnergyCount = 0;
   if (millis() - EnergyCycleStart > Energyblock_sample_millis)
   {
-    // measure the energy E contained in every 25 ms block
+    // measure the energy E contained in every 25 or 15 ms block
     // compute energy of the temp block
     byte e = TempBlockEnergySum / TempBlockEnergyCount;
     // reset temp block
