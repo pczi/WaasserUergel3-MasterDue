@@ -105,7 +105,7 @@ private:
   uint8_t patternStep = 0;
   unsigned long cycleStartTime;
   int _animation;
-  bool _direction;
+  uint8_t _direction;
   int _readyToLaunchMode;
 
   CircularBuffer<byte, 13> nextPattern;

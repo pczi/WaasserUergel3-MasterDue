@@ -9,6 +9,7 @@
 #include "Arduino.h"
 #include <Adafruit_NeoMatrix.h>
 #include <Adafruit_NeoPixel.h>
+#include <Adafruit_I2CDevice.h>
 #include <SPI.h>
 
 #include "LightAnimator.h"
